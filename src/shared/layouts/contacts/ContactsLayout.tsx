@@ -1,14 +1,13 @@
 import { Outlet } from 'react-router-dom';
-import { AsideTitle } from '@shared/components';
+import { Sidebar } from '@features/sidebar/components';
 import { ContactList } from '@features/contacts/components';
 
 export const ContactsLayout = () => {
   return (
     <div className="flex h-full">
-      <aside className="w-[310px] flex flex-col flex-2 bg-primary">
-        <AsideTitle title={'Contacts'} />
+      <Sidebar title="Contacts">
         <ContactList />
-      </aside>
+      </Sidebar>
       <div className="flex-1 border-l border-secondary">
         <Outlet />
       </div>
