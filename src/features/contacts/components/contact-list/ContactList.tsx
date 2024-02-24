@@ -2,7 +2,7 @@ import { ContactItem } from '../contact-item';
 
 export const ContactList = () => {
   return (
-    <div className="flex-1 overflow-y-auto divide-y divide-secondary">
+    <div className="divide-y divide-secondary">
       <ContactItem />
       <ContactItem />
       <ContactItem />
