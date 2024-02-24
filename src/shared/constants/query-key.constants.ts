@@ -1,1 +1,1 @@
-export const QUERY_KEY_ME = 'me';
+export const QUERY_KEY_PROFILE = 'profile';

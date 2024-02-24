@@ -75,11 +75,12 @@ const contactsArray = [
 ];
 
 const user = {
-  id: 100,
+  id: '100',
   name: 'Davron Normuminov',
   email: 'normominovdavron001@gmail.com',
   bio: 'Software Engineer from Uzbekistan',
-  profileImg: 'blob:https://web.telegram.org/0113de39-947e-455d-b705-e7b3a18b6b7b',
+  profileImg:
+    'https://media.licdn.com/dms/image/D4D03AQHRCVlEMl7eqg/profile-displayphoto-shrink_400_400/0/1708437149639?e=1714003200&v=beta&t=dm2Jo52jRDfBh8PltUljmNinStwAT81sWPQ1rV6-tRo',
 };
 
 export const handlers = [
