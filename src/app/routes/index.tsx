@@ -1,8 +1,9 @@
-import { ContactsPage } from '@pages/contacts';
-import { HomePage } from '@pages/home';
-import { ROUTE_CONTACTS, ROUTE_HOME } from '@shared/constants';
-import { ContactsLayout, MainLayout } from '@shared/layouts';
 import { RouteObject } from 'react-router-dom';
+import { HomePage } from '@pages/home';
+import { ContactsPage } from '@pages/contacts';
+import { SelectChatScreen } from '@shared/screens';
+import { ContactsLayout, MainLayout } from '@shared/layouts';
+import { ROUTE_CONTACTS, ROUTE_CONTACTS_VIEW, ROUTE_HOME } from '@shared/constants';
 
 export const routes: RouteObject[] = [
   {
@@ -19,6 +20,10 @@ export const routes: RouteObject[] = [
         children: [
           {
             index: true,
+            element: <SelectChatScreen />,
+          },
+          {
+            path: ROUTE_CONTACTS_VIEW,
             element: <ContactsPage />,
           },
         ],
