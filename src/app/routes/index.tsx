@@ -9,7 +9,7 @@ import {
 
 import { HomePage } from '@pages/home';
 import { ProfilePage } from '@pages/settings';
-import { ContactsPage } from '@pages/contacts';
+import { ContactViewPage } from '@pages/contacts';
 import { SelectChatScreen } from '@shared/screens';
 import { ContactsLayout, MainLayout, SettingsLayout } from '@shared/layouts';
 
@@ -32,7 +32,7 @@ export const routes: RouteObject[] = [
           },
           {
             path: ROUTE_CONTACTS_VIEW,
-            element: <ContactsPage />,
+            element: <ContactViewPage />,
           },
         ],
       },
