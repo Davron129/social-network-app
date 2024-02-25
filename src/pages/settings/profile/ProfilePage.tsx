@@ -1,7 +1,12 @@
 import { useProfile } from '@features/profile/hooks/useProfile';
+import { LoadingScreen } from '@shared/screens/loading-screen';
 
 export const ProfilePage = () => {
-  const { user } = useProfile();
+  const { user, isLoading } = useProfile();
+
+  if (isLoading) {
+    return <LoadingScreen />;
+  }
 
   return (
     <div className="h-full flex flex-col bg-dark">
