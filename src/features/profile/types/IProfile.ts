@@ -5,3 +5,10 @@ export interface IProfile {
   bio: string;
   profileImg: string;
 }
+
+export interface IProfileQuery {
+  name: string;
+  email: string;
+  bio: string;
+  profileImg: string;
+}
