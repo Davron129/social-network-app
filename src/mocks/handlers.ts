@@ -1,4 +1,5 @@
 // src/mocks/handlers.js
+import { IProfile } from '@features/profile/types';
 import { http, HttpResponse } from 'msw';
 
 const contactsArray = [
@@ -74,7 +75,7 @@ const contactsArray = [
   },
 ];
 
-const user = {
+const user: IProfile = {
   id: '100',
   name: 'Davron Normuminov',
   email: 'normominovdavron001@gmail.com',
@@ -90,5 +91,16 @@ export const handlers = [
 
   http.get('/api/users/me', () => {
     return HttpResponse.json(user);
+  }),
+
+  http.post<any, IProfile>('/api/users/me/update', async ({ request }) => {
+    const payload = await request.json();
+
+    user.name = payload.name;
+    user.email = payload.email;
+    user.bio = payload.bio;
+    user.profileImg = payload.profileImg;
+
+    return HttpResponse.json(user, { status: 201 });
   }),
 ];
