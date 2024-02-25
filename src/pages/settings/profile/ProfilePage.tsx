@@ -4,19 +4,35 @@ import { ROUTE_SETTINGS } from '@shared/constants';
 import { ProfileForm, ProfileInfo } from '@features/profile/components';
 import { LoadingScreen } from '@shared/screens/loading-screen';
 import { useProfile } from '@features/profile/hooks/useProfile';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { IProfileQuery } from '@features/profile/types';
+import { useProfileUpdate } from '@features/profile/hooks';
 
 export const ProfilePage = () => {
   const { user, isLoading } = useProfile();
+  const { mutateAsync: updateProfile } = useProfileUpdate();
   const [isEditable, setIsEditable] = useState(false);
+  const formRef = useRef<HTMLButtonElement>(null);
 
   const toggleEditable = () => {
     setIsEditable(!isEditable);
   };
 
   const onSubmit = (values: IProfileQuery) => {
-    console.log(values);
+    if (user) {
+      updateProfile({
+        ...values,
+        id: user.id,
+      }).then(() => {
+        toggleEditable();
+      });
+    }
+  };
+
+  const handleSubmit = () => {
+    if (formRef.current) {
+      formRef.current.click();
+    }
   };
 
   if (isLoading) {
@@ -33,15 +49,21 @@ export const ProfilePage = () => {
           <HiChevronLeft className="text-lg" />
           <span>Back</span>
         </Link>
-        <button className="text-blue-primary" onClick={toggleEditable}>
-          Edit
-        </button>
+        {isEditable ? (
+          <button className="text-blue-primary" onClick={handleSubmit}>
+            Done
+          </button>
+        ) : (
+          <button className="text-blue-primary" onClick={toggleEditable}>
+            Edit
+          </button>
+        )}
       </header>
 
       <main className="p-5 flex-1 overflow-y-auto">
         {user &&
           (isEditable ? (
-            <ProfileForm defaultValues={user} onExternalSubmit={onSubmit} />
+            <ProfileForm defaultValues={user} onExternalSubmit={onSubmit} ref={formRef} />
           ) : (
             <ProfileInfo user={user} />
           ))}
