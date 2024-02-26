@@ -21,7 +21,8 @@
       "@pages/*": ["./pages/*"],
       "@shared/*": ["./shared/*"],
       "@features/*": ["./features/*"]
-    }
+    },
+    "types": ["@types/jest"]
   },
   "include": ["src"]
 }
