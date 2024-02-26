@@ -1,47 +1,46 @@
-# Getting Started with Create React App
+#  Interactive User Profile Interface with Testing
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Setup
 
-## Available Scripts
+1. **Clone the repository:**
 
-In the project directory, you can run:
+    ```bash
+    git clone git@github.com:Davron129/social-network-app.git
+    cd social-network-app
+    ```
 
-### `npm start`
+2. **Install dependencies:**
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+    ```bash
+    yarn install
+    ```
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+3. **Run the app:**
 
-### `npm test`
+    ```bash
+    yarn start
+    ```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+    Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-### `npm run build`
+## Functionality
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The app's UI looks like Telegram's settings and profile pages with view, edit and manage functionality.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Click profile section in order to navigate to profile page
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+![Settings page](https://telegra.ph/file/76302b00d9e85c5dfaa64.png)
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+![Profile page](https://telegra.ph/file/f1f8c2b5e4d6fa1a15399.png)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+By clicking Edit button you can see form for editing user data
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+![Profile Form](https://telegra.ph/file/7458b413ca87e6dfa17f2.png)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Test Execution
 
-## Learn More
+To run tests, use the following command:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-# social-network-app
+```bash
+npm test
