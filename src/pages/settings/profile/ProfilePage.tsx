@@ -7,6 +7,7 @@ import { useProfile } from '@features/profile/hooks/useProfile';
 import { useRef, useState } from 'react';
 import { IProfileQuery } from '@features/profile/types';
 import { useProfileUpdate } from '@features/profile/hooks';
+import { AnimatePresence } from 'framer-motion';
 
 export const ProfilePage = () => {
   const { user, isLoading } = useProfile();
@@ -61,12 +62,15 @@ export const ProfilePage = () => {
       </header>
 
       <main className="p-5 flex-1 overflow-y-auto">
-        {user &&
-          (isEditable ? (
-            <ProfileForm defaultValues={user} onExternalSubmit={onSubmit} ref={formRef} />
-          ) : (
-            <ProfileInfo user={user} />
-          ))}
+        {user && (
+          <AnimatePresence initial={false}>
+            {isEditable ? (
+              <ProfileForm defaultValues={user} onExternalSubmit={onSubmit} ref={formRef} />
+            ) : (
+              <ProfileInfo user={user} />
+            )}
+          </AnimatePresence>
+        )}
       </main>
     </div>
   );

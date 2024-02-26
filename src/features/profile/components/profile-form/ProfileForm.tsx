@@ -9,6 +9,7 @@ import {
 import { ProfileSchema } from '@features/profile/schemas';
 import { IProfileQuery } from '@features/profile/types';
 import { TextFieldController } from '@shared/components';
+import { motion } from 'framer-motion';
 
 interface Props {
   defaultValues: IProfileQuery;
@@ -39,64 +40,71 @@ export const ProfileForm = forwardRef<HTMLButtonElement, Props>(
     const onSubmit = handleSubmit(onValid, onInvalid);
 
     return (
-      <form className="max-w-[600px] mx-auto" onSubmit={onSubmit}>
-        <div className="mb-5">
-          <div className="px-4 bg-primary rounded-lg flex gap-x-3">
-            <div className="h-[60px] w-[60px] my-4 rounded-full bg-secondary flex-2 overflow-hidden aspect-square">
-              <img
-                src={defaultValues.profileImg}
-                alt={defaultValues.name}
-                className="object-cover w-full h-full"
+      <motion.div
+        initial={{ y: 100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        exit={{ y: 100, opacity: 0 }}
+        transition={{ type: 'tween', duration: 0.2 }}
+      >
+        <form className="max-w-[600px] mx-auto" onSubmit={onSubmit}>
+          <div className="mb-5">
+            <div className="px-4 bg-primary rounded-lg flex gap-x-3">
+              <div className="h-[60px] w-[60px] my-4 rounded-full bg-secondary flex-2 overflow-hidden aspect-square">
+                <img
+                  src={defaultValues.profileImg}
+                  alt={defaultValues.name}
+                  className="object-cover w-full h-full"
+                />
+              </div>
+              <div className="divide-y divide-secondary flex-1 flex flex-col">
+                <div className="flex-1 flex items-center">
+                  <TextFieldController
+                    control={control}
+                    placeholder="You Name"
+                    name={PROFILE_FIELD_NAME}
+                  />
+                </div>
+                <div className="flex-1 flex items-center">
+                  <TextFieldController
+                    control={control}
+                    placeholder="Your Email"
+                    name={PROFILE_FIELD_EMAIL}
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="px-4 mt-2">
+              {(errors.name || errors.email) && (
+                <>
+                  <p className="text-xs text-red-500 text-red">{errors.name?.message}</p>
+                  <p className="text-xs text-red-500 text-red">{errors.email?.message}</p>
+                </>
+              )}
+              <p className="text-xs text-muted">Enter you name, username and a profile photo</p>
+            </div>
+          </div>
+
+          <div>
+            <div className="px-4 mb-2">
+              <span className="text-xs text-muted">BIO</span>
+            </div>
+
+            <div className="bg-primary px-4 py-3 rounded-lg">
+              <TextFieldController
+                control={control}
+                placeholder="A few words about you"
+                name={PROFILE_FIELD_BIO}
               />
             </div>
-            <div className="divide-y divide-secondary flex-1 flex flex-col">
-              <div className="flex-1 flex items-center">
-                <TextFieldController
-                  control={control}
-                  placeholder="You Name"
-                  name={PROFILE_FIELD_NAME}
-                />
+            {errors.bio && (
+              <div className="mt-2 px-4">
+                <p className="text-xs text-red-500 text-red">{errors.bio?.message}</p>
               </div>
-              <div className="flex-1 flex items-center">
-                <TextFieldController
-                  control={control}
-                  placeholder="Your Email"
-                  name={PROFILE_FIELD_EMAIL}
-                />
-              </div>
-            </div>
-          </div>
-          <div className="px-4 mt-2">
-            {(errors.name || errors.email) && (
-              <>
-                <p className="text-xs text-red-500 text-red">{errors.name?.message}</p>
-                <p className="text-xs text-red-500 text-red">{errors.email?.message}</p>
-              </>
             )}
-            <p className="text-xs text-muted">Enter you name, username and a profile photo</p>
           </div>
-        </div>
-
-        <div>
-          <div className="px-4 mb-2">
-            <span className="text-xs text-muted">BIO</span>
-          </div>
-
-          <div className="bg-primary px-4 py-3 rounded-lg">
-            <TextFieldController
-              control={control}
-              placeholder="A few words about you"
-              name={PROFILE_FIELD_BIO}
-            />
-          </div>
-          {errors.bio && (
-            <div className="mt-2 px-4">
-              <p className="text-xs text-red-500 text-red">{errors.bio?.message}</p>
-            </div>
-          )}
-        </div>
-        <button type="submit" className="hidden" ref={ref}></button>
-      </form>
+          <button type="submit" className="hidden" ref={ref}></button>
+        </form>
+      </motion.div>
     );
   },
 );
