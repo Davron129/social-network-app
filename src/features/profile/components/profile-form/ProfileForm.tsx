@@ -1,4 +1,5 @@
 import { forwardRef } from 'react';
+import { motion } from 'framer-motion';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { FieldErrors, useForm } from 'react-hook-form';
 import {
@@ -9,7 +10,6 @@ import {
 import { ProfileSchema } from '@features/profile/schemas';
 import { IProfileQuery } from '@features/profile/types';
 import { TextFieldController } from '@shared/components';
-import { motion } from 'framer-motion';
 
 interface Props {
   defaultValues: IProfileQuery;

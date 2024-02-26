@@ -1,6 +1,6 @@
 import { FC } from 'react';
-import { IProfile } from '@features/profile/types';
 import { motion } from 'framer-motion';
+import { IProfile } from '@features/profile/types';
 
 interface Props {
   user: IProfile;
