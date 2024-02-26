@@ -5,7 +5,7 @@ import { ROUTE_SETTINGS_PROFILE } from '@shared/constants';
 import { useProfile } from '@features/profile/hooks/useProfile';
 
 export const ProfileSection = () => {
-  const { user } = useProfile();
+  const { data: user } = useProfile();
   const { pathname } = useLocation();
 
   const isActive = pathname === ROUTE_SETTINGS_PROFILE;

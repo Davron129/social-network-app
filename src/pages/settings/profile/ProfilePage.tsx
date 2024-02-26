@@ -10,7 +10,7 @@ import { useProfileUpdate } from '@features/profile/hooks';
 import { AnimatePresence } from 'framer-motion';
 
 export const ProfilePage = () => {
-  const { user, isLoading } = useProfile();
+  const { data: user, isLoading } = useProfile();
   const { mutateAsync: updateProfile } = useProfileUpdate();
   const [isEditable, setIsEditable] = useState(false);
   const formRef = useRef<HTMLButtonElement>(null);
