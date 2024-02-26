@@ -26,5 +26,6 @@ module.exports = {
       '^.+\\.tsx?$': 'ts-jest',
       // process `*.tsx` files with `ts-jest`
     },
+    setupFiles: ['./jest.polyfills.js'],
   },
 };
