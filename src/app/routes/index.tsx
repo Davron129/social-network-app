@@ -1,17 +1,10 @@
 import { RouteObject } from 'react-router-dom';
-import {
-  ROUTE_CONTACTS,
-  ROUTE_CONTACTS_VIEW,
-  ROUTE_HOME,
-  ROUTE_SETTINGS,
-  ROUTE_SETTINGS_PROFILE,
-} from '@shared/constants';
+import { ROUTE_HOME, ROUTE_SETTINGS, ROUTE_SETTINGS_PROFILE } from '@shared/constants';
 
 import { HomePage } from '@pages/home';
 import { ProfilePage } from '@pages/settings';
-import { ContactViewPage } from '@pages/contacts';
 import { SelectChatScreen } from '@shared/screens';
-import { ContactsLayout, MainLayout, SettingsLayout } from '@shared/layouts';
+import { MainLayout, SettingsLayout } from '@shared/layouts';
 
 export const routes: RouteObject[] = [
   {
@@ -21,20 +14,6 @@ export const routes: RouteObject[] = [
       {
         index: true,
         element: <HomePage />,
-      },
-      {
-        path: ROUTE_CONTACTS,
-        element: <ContactsLayout />,
-        children: [
-          {
-            index: true,
-            element: <SelectChatScreen />,
-          },
-          {
-            path: ROUTE_CONTACTS_VIEW,
-            element: <ContactViewPage />,
-          },
-        ],
       },
       {
         path: ROUTE_SETTINGS,
