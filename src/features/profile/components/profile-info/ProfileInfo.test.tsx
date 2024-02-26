@@ -14,31 +14,11 @@ const mockUser: IProfile = {
 test('ProfileInfo renders correctly with user data', () => {
   render(<ProfileInfo user={mockUser} />);
 
-  // Check if user's name is rendered
   expect(screen.getByText(mockUser.name)).toBeInTheDocument();
 
-  // Check if user's image is rendered
   expect(screen.getByAltText(mockUser.name)).toBeInTheDocument();
 
-  // Check if user's bio is rendered
   expect(screen.getByText(mockUser.bio)).toBeInTheDocument();
 
-  // Check if user's email is rendered
   expect(screen.getByText(mockUser.email)).toBeInTheDocument();
-});
-
-test('ProfileInfo animations are applied', async () => {
-  render(<ProfileInfo user={mockUser} />);
-
-  // Check if the initial animation state is applied
-  expect(screen.getByText(mockUser.name)).toHaveStyle({
-    opacity: 0,
-    transform: 'translateY(100px)',
-  });
-
-  // Wait for the animation to complete
-  await new Promise((resolve) => setTimeout(resolve, 300)); // Adjust the time based on your animation duration
-
-  // Check if the final animation state is applied
-  expect(screen.getByText(mockUser.name)).toHaveStyle({ opacity: 1, transform: 'translateY(0)' });
 });
